@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pages\Landing;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', Landing::class)->name('landing');
