@@ -17,7 +17,7 @@ class Asset extends Model
     protected $fillable = [
         'user_id',
         'category_id',
-        'status_id',
+        'asset_status', // Change from status_id to asset_status
         'asset_name',
         'asset_description',
         'asset_total',
@@ -39,4 +39,5 @@ class Asset extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+    
 }

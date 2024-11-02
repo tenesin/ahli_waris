@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('asset_id')->primary();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('status_id'); // Add the status_id column as a foreign key
             $table->string('asset_name');
             $table->string('asset_description')->nullable();
             $table->unsignedInteger('asset_total');
@@ -22,8 +23,11 @@ return new class extends Migration
             $table->decimal('asset_estimated_value', 16, 2);
             $table->timestamps();
 
-            $table->foreign('category_id')->references('category_id')->on('asset_categories');
-            $table->foreign('user_id')->references('id')->on('users');
+            // Foreign key constraints
+            $table->string('asset_status')->default('Belum Dialokasikan');
+            $table->foreign('category_id')->references('category_id')->on('asset_categories')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('status_id')->references('status_id')->on('status_options')->onDelete('cascade'); // Status options foreign key
         });
     }
 
