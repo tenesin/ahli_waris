@@ -20,7 +20,7 @@ class RegisterPage extends Register
     protected function getNameFormComponent(): Component
     {
         return TextInput::make('name')
-            ->label(__('ahli-waris.pages.auth.register.form.name.label'))
+            ->label('Full Name')
             ->required()
             ->maxLength(255)
             ->autofocus();
@@ -29,7 +29,7 @@ class RegisterPage extends Register
     protected function getEmailFormComponent(): Component
     {
         return TextInput::make('email')
-            ->label(__('ahli-waris.pages.auth.register.form.email.label'))
+            ->label('Email Address')
             ->email()
             ->required()
             ->maxLength(255)
@@ -39,20 +39,20 @@ class RegisterPage extends Register
     protected function getPasswordFormComponent(): Component
     {
         return TextInput::make('password')
-            ->label(__('ahli-waris.pages.auth.register.form.password.label'))
+            ->label('Password')
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
             ->required()
             ->rule(Password::default())
             ->dehydrateStateUsing(fn ($state) => Hash::make($state))
             ->same('passwordConfirmation')
-            ->validationAttribute(__('ahli-waris.pages.auth.register.form.password.validation_attribute'));
+            ->validationAttribute('password');
     }
 
     protected function getPasswordConfirmationFormComponent(): Component
     {
         return TextInput::make('passwordConfirmation')
-            ->label(__('ahli-waris.pages.auth.register.form.password_confirmation.label'))
+            ->label('Confirm Password')
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
             ->required()
@@ -63,26 +63,24 @@ class RegisterPage extends Register
     {
         return Action::make('login')
             ->link()
-            ->label(__('ahli-waris.pages.auth.register.actions.login.label'))
+            ->label('Masuk Disini')
             ->url(filament()->getLoginUrl());
     }
 
-
     public function getTitle(): string | Htmlable
     {
-        return __('ahli-waris.pages.auth.register.title');
+        return 'Create a New Account';
     }
 
     public function getHeading(): string | Htmlable
     {
-        return __('ahli-waris.pages.auth.register.heading');
+        return 'Register';
     }
-
 
     public function getRegisterFormAction(): Action
     {
         return Action::make('register')
-            ->label(__('ahli-waris.pages.auth.register.form.actions.register.label'))
+            ->label('Register')
             ->submit('register');
     }
 }

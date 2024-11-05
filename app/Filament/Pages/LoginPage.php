@@ -22,14 +22,14 @@ class LoginPage extends Login
     {
         return Action::make('register')
             ->link()
-            ->label(__('ahli-waris.pages.auth.login.actions.register.label'))
+            ->label('Daftar Disini')
             ->url(filament()->getRegistrationUrl());
     }
 
     protected function getEmailFormComponent(): Component
     {
         return TextInput::make('email')
-            ->label(__('ahli-waris.pages.auth.login.form.email.label'))
+            ->label('Email Address')
             ->email()
             ->required()
             ->autocomplete()
@@ -40,8 +40,8 @@ class LoginPage extends Login
     protected function getPasswordFormComponent(): Component
     {
         return TextInput::make('password')
-            ->label(__('ahli-waris.pages.auth.login.form.password.label'))
-            ->hint(filament()->hasPasswordReset() ? new HtmlString(Blade::render('<x-filament::link :href="filament()->getRequestPasswordResetUrl()"> {{ __(\'filament-panels::pages.auth.login.actions.request_password_reset.label\') }}</x-filament::link>')) : null)
+            ->label('Password')
+            ->hint(filament()->hasPasswordReset() ? new HtmlString(Blade::render('<x-filament::link :href="filament()->getRequestPasswordResetUrl()">Reset Password</x-filament::link>')) : null)
             ->password()
             ->revealable(filament()->arePasswordsRevealable())
             ->autocomplete('current-password')
@@ -52,23 +52,23 @@ class LoginPage extends Login
     protected function getRememberFormComponent(): Component
     {
         return Checkbox::make('remember')
-            ->label(__('ahli-waris.pages.auth.login.form.remember.label'));
+            ->label('Remember Me');
     }
 
     public function getTitle(): string | Htmlable
     {
-        return __('ahli-waris.pages.auth.login.title');
+        return 'Login to Your Account';
     }
 
     public function getHeading(): string | Htmlable
     {
-        return __('ahli-waris.pages.auth.login.heading');
+        return 'Welcome Back';
     }
 
     protected function getAuthenticateFormAction(): Action
     {
         return Action::make('authenticate')
-            ->label(__('ahli-waris.pages.auth.login.form.actions.authenticate.label'))
+            ->label('Sign In')
             ->submit('authenticate');
     }
 }

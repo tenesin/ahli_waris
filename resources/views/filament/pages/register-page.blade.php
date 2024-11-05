@@ -1,6 +1,6 @@
 <div class="px-2 py-12 sm:px-4 w-full">
     <h1 class="fi-simple-header-heading text-2xl font-bold tracking-tight text-gray-950 dark:text-white my-2">
-        {{ __('ahli-waris.pages.auth.register.heading') }}
+        {{ __('Daftar Akun') }}
     </h1>
 
     {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::AUTH_LOGIN_FORM_BEFORE, scopes: $this->getRenderHookScopes()) }}
@@ -18,7 +18,7 @@
 
     @if (filament()->hasLogin())
         <p class="flex justify-center">
-            <span>{{ __('ahli-waris.pages.auth.register.actions.login.before') }}
+            <span>{{ __('Sudah punya akun?') }}
                 {{ $this->loginAction }}</span>
         </p>
     @endif
